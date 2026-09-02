@@ -1432,6 +1432,21 @@ specialty_counts.columns = ["التخصص", "العدد"]
         use_container_width=True
     )
 
+# أخذ أبرز التخصصات
+major_data = specialty_counts.head(5)
+
+# رسم Treemap
+fig = px.treemap(
+    major_data,
+    path=["التخصص"],
+    values="العدد",
+    title="أبرز التخصصات"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
 
 # =========================================================
 # SECTION 4
