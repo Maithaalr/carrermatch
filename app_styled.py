@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import plotly.graph_objects as go
+import textwrap
 
 # =========================================================
 # PAGE CONFIG
@@ -181,6 +182,11 @@ h1,h2,h3,h4,p,label,span,div {
 """, unsafe_allow_html=True)
 
 
+def render_html(content):
+    """Render indented HTML safely without Markdown treating it as a code block."""
+    st.markdown(textwrap.dedent(content).strip(), unsafe_allow_html=True)
+
+
 # =========================================================
 # HELPERS
 # =========================================================
@@ -260,7 +266,7 @@ def kpi_card(label, value, note=""):
 # HERO
 # =========================================================
 
-st.markdown("""
+render_html("""
 <div class="hero-card">
 
     <div class="eyebrow">
@@ -278,7 +284,7 @@ st.markdown("""
     </div>
 
 </div>
-""", unsafe_allow_html=True)
+""")
 
 
 # =========================================================
@@ -292,14 +298,14 @@ uploaded_file = st.file_uploader(
 
 if uploaded_file is None:
 
-    st.markdown("""
+    render_html("""
     <div class="insight-card">
         <div class="insight-label">ابدأ التحليل</div>
         <div class="insight-text">
         ارفع ملف Excel وسيتم تحديد العقود الخاصة وتحليلها تلقائياً.
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """)
 
     st.stop()
 
@@ -689,8 +695,7 @@ if department_col and not filtered_df.empty:
         top_count / len(filtered_df) * 100
     )
 
-    st.markdown(
-        f"""
+    render_html(f"""
         <div class="insight-card">
 
             <div class="insight-label">
@@ -707,9 +712,7 @@ if department_col and not filtered_df.empty:
             </div>
 
         </div>
-        """,
-        unsafe_allow_html=True
-    )
+        """)
 
 
 # =========================================================
@@ -1478,8 +1481,7 @@ if service_col:
             else 0
         )
 
-        st.markdown(
-            f"""
+        render_html(f"""
             <div class="insight-card">
 
                 <div class="insight-label">
@@ -1498,9 +1500,7 @@ if service_col:
                 </div>
 
             </div>
-            """,
-            unsafe_allow_html=True
-        )
+            """)
 
 
 # =========================================================
@@ -1552,8 +1552,7 @@ if len(cost_series) >= 4 and cost_series.max() > 0:
         use_container_width=True
     )
 
-    st.markdown(
-        f"""
+    render_html(f"""
         <div class="insight-card">
 
             <div class="insight-label">
@@ -1570,9 +1569,7 @@ if len(cost_series) >= 4 and cost_series.max() > 0:
             </div>
 
         </div>
-        """,
-        unsafe_allow_html=True
-    )
+        """)
 
 
 # =========================================================
@@ -1710,8 +1707,7 @@ if quality_fields:
 # FINAL EXECUTIVE VIEW
 # =========================================================
 
-st.markdown(
-    """
+render_html("""
     <div class="hero-card">
         <div class="eyebrow">Executive Intelligence</div>
 
@@ -1727,9 +1723,7 @@ st.markdown(
             الأكثر أهمية.
         </div>
     </div>
-    """,
-    unsafe_allow_html=True
-)
+    """)
 
 
 # =========================================================
@@ -1764,4 +1758,3 @@ with st.expander(
         use_container_width=True,
         hide_index=True
     )
-
