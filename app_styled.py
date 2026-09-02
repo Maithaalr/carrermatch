@@ -1385,39 +1385,36 @@ with q2:
         )
 
 
-if major_col:
+if "التخصص" in df_filtered.columns:
 
-    major_data = (
-        filtered_df[major_col]
+    # تنظيف وتوحيد مسميات التخصص
+    df_filtered["التخصص"] = (
+        df_filtered["التخصص"]
         .fillna("غير محدد")
+        .astype(str)
+        .str.strip()
+        .replace({
+            "محاسبة": "المحاسبة",
+            "المحاسبة": "المحاسبة",
+            "": "غير محدد",
+            "nan": "غير محدد",
+            "None": "غير محدد"
+        })
+    )
+
+    # حساب عدد الموظفين في كل تخصص
+    specialty_counts = (
+        df_filtered["التخصص"]
         .value_counts()
-        .head(15)
         .reset_index()
     )
 
-    major_data.columns = [
-        "التخصص",
-        "العدد"
-    ]
-# توحيد مسميات التخصص
-df_filtered["التخصص"] = (
-    df_filtered["التخصص"]
-    .astype(str)
-    .str.strip()
-    .replace({
-        "محاسبة": "المحاسبة",
-        "المحاسبة": "المحاسبة"
-    })
-)
+    specialty_counts.columns = ["التخصص", "العدد"]
 
-# حساب عدد الموظفين حسب التخصص
-specialty_counts = (
-    df_filtered["التخصص"]
-    .value_counts()
-    .reset_index()
-)
+    # أخذ أبرز 15 تخصص
+    major_data = specialty_counts.head(15)
 
-specialty_counts.columns = ["التخصص", "العدد"]
+    # رسم Treemap
     fig = px.treemap(
         major_data,
         path=["التخصص"],
@@ -1425,29 +1422,34 @@ specialty_counts.columns = ["التخصص", "العدد"]
         title="أبرز التخصصات"
     )
 
-    style_fig(fig, 450)
+    # تنسيق الرسم
+    fig.update_layout(
+        font=dict(
+            family="Tajawal",
+            size=14
+        ),
+        title=dict(
+            text="أبرز التخصصات",
+            x=1,
+            xanchor="right"
+        ),
+        margin=dict(
+            l=10,
+            r=10,
+            t=55,
+            b=10
+        )
+    )
 
+    # عرض الرسم
     st.plotly_chart(
         fig,
         use_container_width=True
     )
 
-# أخذ أبرز التخصصات
-major_data = specialty_counts.head(5)
-
-# رسم Treemap
-fig = px.treemap(
-    major_data,
-    path=["التخصص"],
-    values="العدد",
-    title="أبرز التخصصات"
-)
-
-st.plotly_chart(
-    fig,
-    use_container_width=True
-)
-
+else:
+    st.info("حقل التخصص غير متوفر ضمن البيانات.")
+    
 # =========================================================
 # SECTION 4
 # EXPERIENCE VS COST
