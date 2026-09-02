@@ -23,6 +23,10 @@ st.markdown("""
 
 <style>
 
+/* =========================================
+   GENERAL
+========================================= */
+
 [data-testid="stSidebar"] {
     display: none;
 }
@@ -39,15 +43,30 @@ footer {
     visibility: hidden;
 }
 
-html, body, [class*="css"] {
+/* التطبيق بالكامل RTL */
+html,
+body,
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+[data-testid="stMainBlockContainer"] {
+    direction: rtl !important;
+    text-align: right !important;
     font-family: 'Tajawal', sans-serif !important;
-    direction: rtl;
 }
 
 .stApp {
     background:
-        radial-gradient(circle at top right, rgba(255,255,255,0.8), transparent 35%),
-        linear-gradient(135deg, #f8f4f0 0%, #efe5dc 100%);
+        radial-gradient(
+            circle at top right,
+            rgba(255,255,255,0.8),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #f8f4f0 0%,
+            #efe5dc 100%
+        );
 }
 
 .block-container {
@@ -55,127 +74,328 @@ html, body, [class*="css"] {
     padding-left: 55px !important;
     padding-right: 55px !important;
     max-width: 1450px !important;
+    direction: rtl !important;
+    text-align: right !important;
 }
 
-/* HERO */
+
+/* =========================================
+   HERO
+========================================= */
+
 .hero-card {
+    direction: rtl !important;
+    text-align: right !important;
+
     background: rgba(255,255,255,0.48);
     border: 1px solid rgba(107,62,9,0.15);
     border-radius: 30px;
+
     padding: 42px 46px;
     margin-bottom: 25px;
-    box-shadow: 0 8px 30px rgba(107,62,9,0.04);
+
+    box-shadow:
+        0 8px 30px rgba(107,62,9,0.04);
 }
 
 .eyebrow {
+    display: block;
+
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #8a725b;
+
     font-size: 16px;
-    margin-bottom: 8px;
+    font-weight: 500;
+
+    margin: 0 0 10px 0;
+    padding: 0;
 }
 
 .main-title {
+    display: block;
+
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #6b3e09;
+
     font-size: 46px;
-    font-weight: 500;
-    margin: 0;
+    font-weight: 600;
+    line-height: 1.35;
+
+    margin: 0 0 12px 0;
+    padding: 0;
 }
 
 .hero-text {
+    display: block;
+
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #555;
+
     font-size: 19px;
     line-height: 1.9;
-    margin-top: 12px;
+
+    margin: 0;
+    padding: 0;
+
     max-width: 850px;
+
+    margin-right: 0 !important;
+    margin-left: auto !important;
 }
 
-/* SECTION */
+
+/* =========================================
+   SECTION TITLES
+========================================= */
+
 .section-title {
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #6b3e09;
+
     font-size: 29px;
     font-weight: 500;
+
     margin-top: 35px;
     margin-bottom: 6px;
 }
 
 .section-subtitle {
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #777;
+
     font-size: 15px;
+
     margin-bottom: 20px;
 }
 
-/* KPI */
+
+/* =========================================
+   KPI CARDS
+========================================= */
+
 .kpi-card {
+    direction: rtl !important;
+    text-align: right !important;
+
     background: rgba(255,255,255,0.62);
-    border: 1px solid rgba(107,62,9,0.12);
+
+    border:
+        1px solid rgba(107,62,9,0.12);
+
     border-radius: 24px;
+
     padding: 22px;
+
     min-height: 125px;
-    box-shadow: 0 6px 22px rgba(80,50,20,0.035);
+
+    box-shadow:
+        0 6px 22px rgba(80,50,20,0.035);
 }
 
 .kpi-label {
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #85776b;
+
     font-size: 14px;
+
     margin-bottom: 9px;
 }
 
 .kpi-value {
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #6b3e09;
+
     font-size: 30px;
     font-weight: 600;
 }
 
 .kpi-note {
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #999;
+
     font-size: 12px;
+
     margin-top: 5px;
 }
 
-/* CHART CARD */
+
+/* =========================================
+   CHART CARDS
+========================================= */
+
 .chart-card {
+    direction: rtl !important;
+    text-align: right !important;
+
     background: rgba(255,255,255,0.55);
-    border: 1px solid rgba(107,62,9,0.11);
+
+    border:
+        1px solid rgba(107,62,9,0.11);
+
     border-radius: 25px;
+
     padding: 15px 20px 5px 20px;
+
     margin-bottom: 18px;
 }
 
-/* INSIGHT */
+
+/* =========================================
+   INSIGHT CARDS
+========================================= */
+
 .insight-card {
+    direction: rtl !important;
+    text-align: right !important;
+
     background: rgba(107,62,9,0.06);
-    border-right: 4px solid #6b3e09;
+
+    /* الخط يكون من جهة اليمين */
+    border-right:
+        4px solid #6b3e09;
+
+    border-left: none;
+
     border-radius: 20px;
+
     padding: 22px 25px;
+
     margin: 18px 0 25px 0;
 }
 
 .insight-label {
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #6b3e09;
+
     font-size: 13px;
     font-weight: 600;
 }
 
 .insight-text {
+    direction: rtl !important;
+    text-align: right !important;
+
     color: #444;
+
     font-size: 17px;
     line-height: 1.8;
+
     margin-top: 5px;
 }
 
-/* UPLOADER */
+
+/* =========================================
+   FILE UPLOADER
+========================================= */
+
+[data-testid="stFileUploader"] {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+[data-testid="stFileUploader"] label {
+    direction: rtl !important;
+    text-align: right !important;
+    width: 100%;
+}
+
 .stFileUploader section {
-    border: 1.5px dashed #a67c52 !important;
-    background: rgba(255,255,255,0.4) !important;
-    border-radius: 22px !important;
+    direction: rtl !important;
+    text-align: right !important;
+
+    border:
+        1.5px dashed #a67c52 !important;
+
+    background:
+        rgba(255,255,255,0.4) !important;
+
+    border-radius:
+        22px !important;
 }
 
-/* FILTERS */
+
+/* =========================================
+   FILTERS
+========================================= */
+
 div[data-baseweb="select"] {
-    border-radius: 16px !important;
+    direction: rtl !important;
+    text-align: right !important;
+
+    border-radius:
+        16px !important;
 }
 
-h1,h2,h3,h4,p,label,span,div {
-    font-family: 'Tajawal', sans-serif !important;
+div[data-baseweb="select"] * {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+
+/* =========================================
+   STREAMLIT TEXT / LABELS
+========================================= */
+
+[data-testid="stMarkdownContainer"] {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3,
+[data-testid="stMarkdownContainer"] h4 {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+
+/* =========================================
+   INPUT LABELS
+========================================= */
+
+label {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+
+/* =========================================
+   FONT
+========================================= */
+
+h1,
+h2,
+h3,
+h4,
+p,
+label,
+span,
+div,
+button,
+input {
+    font-family:
+        'Tajawal',
+        sans-serif !important;
 }
 
 </style>
