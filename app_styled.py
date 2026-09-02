@@ -906,24 +906,20 @@ if department_col and not filtered_df.empty:
         top_count / len(filtered_df) * 100
     )
 
-    render_html(f"""
-        <div class="insight-card">
 
-            <div class="insight-label">
-                أبرز ملاحظة
-            </div>
-
-            <div class="insight-text">
-                تتركز أعلى نسبة من العقود الخاصة في
-                <b>{top_department}</b>،
-                بعدد <b>{top_count:,}</b> موظف،
-                بما يمثل تقريباً
-                <b>{top_percentage:.1f}%</b>
-                من العقود الخاصة ضمن البيانات المعروضة.
-            </div>
-
-        </div>
-        """)
+st.markdown(
+    f'<div class="insight-card" dir="rtl">'
+    f'<div class="insight-label">أبرز ملاحظة</div>'
+    f'<div class="insight-text">'
+    f'تتركز أعلى نسبة من العقود الخاصة في '
+    f'<b>{top_department}</b>، '
+    f'بعدد <b>{top_count:,}</b> موظف، '
+    f'بما يمثل تقريباً <b>{top_percentage:.1f}%</b> '
+    f'من العقود الخاصة ضمن البيانات المعروضة.'
+    f'</div>'
+    f'</div>',
+    unsafe_allow_html=True
+)
 
 
 # =========================================================
