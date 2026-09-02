@@ -1423,7 +1423,7 @@ if major_col and major_col in filtered_df.columns:
     ]
 
     # أخذ أبرز 15 تخصص
-    major_data = specialty_counts.head(15)
+    major_data = specialty_counts.head(5)
 
     # إنشاء Treemap
     fig = px.treemap(
