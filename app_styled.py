@@ -1385,11 +1385,18 @@ with q2:
         )
 
 
-if "major_col" in df_filtered.columns:
+# =========================================================
+# أبرز التخصصات
+# =========================================================
+
+if major_col and major_col in df_filtered.columns:
+
+    # إنشاء نسخة من البيانات
+    specialty_data = df_filtered.copy()
 
     # تنظيف وتوحيد مسميات التخصص
-    df_filtered["major_col"] = (
-        df_filtered["major_col"]
+    specialty_data[major_col] = (
+        specialty_data[major_col]
         .fillna("غير محدد")
         .astype(str)
         .str.strip()
@@ -1402,24 +1409,30 @@ if "major_col" in df_filtered.columns:
         })
     )
 
-    # حساب عدد الموظفين في كل تخصص
+    # حساب عدد الموظفين لكل تخصص
     specialty_counts = (
-        df_filtered["major_col"]
+        specialty_data[major_col]
         .value_counts()
         .reset_index()
     )
 
-    specialty_counts.columns = ["major_col", "العدد"]
+    # تسمية الأعمدة
+    specialty_counts.columns = ["التخصص", "العدد"]
 
     # أخذ أبرز 15 تخصص
     major_data = specialty_counts.head(15)
 
-    # رسم Treemap
+    # إنشاء Treemap
     fig = px.treemap(
         major_data,
-        path=["major_col"],
+        path=["التخصص"],
         values="العدد",
         title="أبرز التخصصات"
+    )
+
+    # إظهار اسم التخصص والعدد
+    fig.update_traces(
+        textinfo="label+value"
     )
 
     # تنسيق الرسم
