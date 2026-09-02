@@ -1399,7 +1399,25 @@ if major_col:
         "التخصص",
         "العدد"
     ]
+# توحيد مسميات التخصص
+df_filtered["التخصص"] = (
+    df_filtered["التخصص"]
+    .astype(str)
+    .str.strip()
+    .replace({
+        "محاسبة": "المحاسبة",
+        "المحاسبة": "المحاسبة"
+    })
+)
 
+# حساب عدد الموظفين حسب التخصص
+specialty_counts = (
+    df_filtered["التخصص"]
+    .value_counts()
+    .reset_index()
+)
+
+specialty_counts.columns = ["التخصص", "العدد"]
     fig = px.treemap(
         major_data,
         path=["التخصص"],
