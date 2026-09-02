@@ -1751,24 +1751,17 @@ if len(cost_series) >= 4 and cost_series.max() > 0:
         use_container_width=True
     )
 
-    render_html(f"""
-        <div class="insight-card">
-
-            <div class="insight-label">
-                Cost Intelligence
-            </div>
-
-            <div class="insight-text">
-                حدد التحليل الإحصائي
-                <b>{outlier_count:,}</b>
-                حالة ذات تكلفة أعلى من النطاق المعتاد
-                وفقاً لتوزيع البيانات.
-                لا تعني هذه الحالات وجود خطأ،
-                وإنما تمثل حالات مناسبة للمراجعة والمقارنة.
-            </div>
-
-        </div>
-        """)
+st.markdown(
+    f'<div class="insight-card" dir="rtl">'
+    f'<div class="insight-label">Cost Intelligence</div>'
+    f'<div class="insight-text">'
+    f'حدد التحليل الإحصائي <b>{outlier_count:,}</b> '
+    f'حالة ذات تكلفة أعلى من النطاق المعتاد وفقاً لتوزيع البيانات. '
+    f'لا تعني هذه الحالات وجود خطأ، وإنما تمثل حالات مناسبة للمراجعة والمقارنة.'
+    f'</div>'
+    f'</div>',
+    unsafe_allow_html=True
+)
 
 
 # =========================================================
