@@ -849,7 +849,7 @@ st.markdown(
 )
 
 
-k1, k2, k3, k4, k5 = st.columns(5)
+k1, k2, k3, k4 = st.columns(5)
 
 with k1:
     kpi_card(
@@ -879,12 +879,6 @@ with k4:
         "سنة"
     )
 
-with k5:
-    kpi_card(
-        "متوسط الخبرة السابقة",
-        f"{avg_experience:.1f}",
-        "سنة"
-    )
 
 
 # =========================================================
