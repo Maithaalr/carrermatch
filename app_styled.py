@@ -489,8 +489,8 @@ def kpi_card(label, value, note=""):
 st.markdown(
     """
 <div class="hero-card" dir="rtl">
-<div class="eyebrow">ذكاء القوى العاملة</div>
-<h1 class="main-title">منظومة تحليل العقود الخاصة</h1>
+<div class="eyebrow"> القوى العاملة</div>
+<h1 class="main-title">تحليل العقود الخاصة</h1>
 <div class="hero-text">
 تحليل متكامل للعقود الخاصة بهدف فهم توزيعها، وخصائص القوى العاملة، والكفاءات، والتكلفة، والاستثناءات التي تستحق المراجعة الإدارية.
 </div>
@@ -849,7 +849,7 @@ st.markdown(
 )
 
 
-k1, k2, k3, k4 = st.columns(5)
+k1, k2, k3, k4 = st.columns(4)
 
 with k1:
     kpi_card(
