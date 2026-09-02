@@ -1688,26 +1688,18 @@ if service_col:
             else 0
         )
 
-        render_html(f"""
-            <div class="insight-card">
-
-                <div class="insight-label">
-                    استمرارية العقود
-                </div>
-
-                <div class="insight-text">
-                    يوجد <b>{long_tenure:,}</b> موظفاً
-                    بعقد خاص تجاوزت مدة خدمتهم
-                    <b>10 سنوات</b>،
-                    بما يمثل
-                    <b>{long_pct:.1f}%</b>
-                    من العقود الخاصة المعروضة.
-                    قد تمثل هذه الفئة مجالاً مناسباً للمراجعة
-                    لفهم طبيعة الاحتياج طويل الأمد.
-                </div>
-
-            </div>
-            """)
+st.markdown(
+    f'<div class="insight-card" dir="rtl">'
+    f'<div class="insight-label">استمرارية العقود</div>'
+    f'<div class="insight-text">'
+    f'يوجد <b>{long_tenure:,}</b> موظفاً بعقد خاص تجاوزت مدة خدمتهم '
+    f'<b>10 سنوات</b>، بما يمثل <b>{long_pct:.1f}%</b> '
+    f'من العقود الخاصة المعروضة. '
+    f'قد تمثل هذه الفئة مجالاً مناسباً للمراجعة لفهم طبيعة الاحتياج طويل الأمد.'
+    f'</div>'
+    f'</div>',
+    unsafe_allow_html=True
+)
 
 
 # =========================================================
