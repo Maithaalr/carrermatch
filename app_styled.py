@@ -1386,13 +1386,14 @@ with q2:
 
 
 # =========================================================
+# =========================================================
 # أبرز التخصصات
 # =========================================================
 
-if major_col and major_col in df_filtered.columns:
+if major_col and major_col in filtered_df.columns:
 
     # إنشاء نسخة من البيانات
-    specialty_data = df_filtered.copy()
+    specialty_data = filtered_df.copy()
 
     # تنظيف وتوحيد مسميات التخصص
     specialty_data[major_col] = (
@@ -1416,8 +1417,10 @@ if major_col and major_col in df_filtered.columns:
         .reset_index()
     )
 
-    # تسمية الأعمدة
-    specialty_counts.columns = ["التخصص", "العدد"]
+    specialty_counts.columns = [
+        "التخصص",
+        "العدد"
+    ]
 
     # أخذ أبرز 15 تخصص
     major_data = specialty_counts.head(15)
@@ -1435,24 +1438,8 @@ if major_col and major_col in df_filtered.columns:
         textinfo="label+value"
     )
 
-    # تنسيق الرسم
-    fig.update_layout(
-        font=dict(
-            family="Tajawal",
-            size=14
-        ),
-        title=dict(
-            text="أبرز التخصصات",
-            x=1,
-            xanchor="right"
-        ),
-        margin=dict(
-            l=10,
-            r=10,
-            t=55,
-            b=10
-        )
-    )
+    # استخدام نفس تنسيق الرسومات في الداشبورد
+    style_fig(fig)
 
     # عرض الرسم
     st.plotly_chart(
