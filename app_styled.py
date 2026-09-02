@@ -1899,24 +1899,17 @@ if quality_fields:
 # FINAL EXECUTIVE VIEW
 # =========================================================
 
-render_html("""
-    <div class="hero-card">
-        <div class="eyebrow">Executive Intelligence</div>
-
-        <h1 class="main-title" style="font-size:34px;">
-            ماذا تخبرنا البيانات؟
-        </h1>
-
-        <div class="hero-text">
-            تجمع المنظومة بين تحليل الانتشار المؤسسي،
-            وخصائص القوى العاملة، والكفاءات،
-            والتكلفة، والاستثناءات؛ بهدف توجيه
-            المراجعة الإدارية إلى الحالات والأنماط
-            الأكثر أهمية.
-        </div>
-    </div>
-    """)
-
+st.markdown(
+    f'<div class="hero-card" dir="rtl">'
+    f'<h1 class="main-title" style="font-size:34px;">ماذا تخبرنا البيانات؟</h1>'
+    f'<div class="hero-text">'
+    f'تجمع المنظومة بين تحليل الانتشار المؤسسي، وخصائص القوى العاملة، '
+    f'والكفاءات، والتكلفة، والاستثناءات؛ بهدف توجيه المراجعة الإدارية '
+    f'إلى الحالات والأنماط الأكثر أهمية.'
+    f'</div>'
+    f'</div>',
+    unsafe_allow_html=True
+)
 
 # =========================================================
 # DATA PREVIEW
